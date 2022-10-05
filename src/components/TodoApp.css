@@ -1,11 +1,8 @@
 .todo-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* height: 100vh; */
+    width: 400px;
+    /* margin: 0 auto; */
+    /* margin-top: 1rem; */
+    background-color: aqua;
+    padding: 1rem;
 }
 
-.form-control{
-    width: 250px;
-}

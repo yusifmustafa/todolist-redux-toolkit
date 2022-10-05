@@ -1,4 +1,10 @@
-#list-group {
+.list-group-item{
+    width: 400px;
     margin: 0 auto;
+    margin-top:1rem;
+    background-color: aquamarine;
 }
 
+.btn-info{
+    margin-left: 1rem;
+}

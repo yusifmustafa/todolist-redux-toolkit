@@ -9,9 +9,7 @@ const TodoList = () => {
     <div>
       {(todo ? todo : []).map((item, key) => (
         <ul key={item.id} className="list-group">
-          <li>
-            <TodoItem id={item.id} title={item.title} />
-          </li>
+          <TodoItem title={item.title} id={item.id} />
         </ul>
       ))}
     </div>

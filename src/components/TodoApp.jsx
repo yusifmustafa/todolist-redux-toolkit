@@ -13,10 +13,6 @@ const TodoApp = () => {
   };
 
   return (
-    <>
-      <div>
-        
-      </div>
       <div className="todo-form">
         <input
           type="text"
@@ -29,7 +25,7 @@ const TodoApp = () => {
           Add
         </button>
       </div>
-    </>
+    
   );
 };
 
