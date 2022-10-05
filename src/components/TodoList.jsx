@@ -7,9 +7,11 @@ const TodoList = () => {
   console.log("todo", todo);
   return (
     <div>
-      {todo.map((item, key) => (
+      {(todo ? todo : []).map((item, key) => (
         <ul key={item.id} className="list-group">
-          <TodoItem id={item.id} title={item.title} />
+          <li>
+            <TodoItem id={item.id} title={item.title} />
+          </li>
         </ul>
       ))}
     </div>

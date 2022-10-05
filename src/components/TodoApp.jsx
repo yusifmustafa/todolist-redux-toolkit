@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {  todoActions } from "../features/todoSlice";
+import { todoActions } from "../features/todoSlice";
 import "./TodoApp.css";
 const TodoApp = () => {
   const dispatch = useDispatch();
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -13,16 +13,23 @@ const TodoApp = () => {
   };
 
   return (
-    <div className="todo-form">
+    <>
+      <div>
+        
+      </div>
+      <div className="todo-form">
         <input
           type="text"
           className="form-control mb-2 mr-sm-2"
           placeholder="Add todo.."
           onChange={(e) => setInput(e.target.value)}
-          value={input||''}
+          value={input || ""}
         />
-        <button onClick={onSubmit} className="btn btn-primary">Add</button>
-    </div>
+        <button onClick={onSubmit} className="btn btn-primary">
+          Add
+        </button>
+      </div>
+    </>
   );
 };
 

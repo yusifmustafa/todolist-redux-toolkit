@@ -7,8 +7,7 @@ function App() {
   return (
     <div className="App">
       <TodoApp />
-      <TodoList />
-      <TodoItem />
+      <TodoList /> 
     </div>
   );
 }
