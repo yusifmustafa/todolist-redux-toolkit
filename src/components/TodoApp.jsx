@@ -9,7 +9,7 @@ const TodoApp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(todoActions.addTodo());
+    dispatch(todoActions.addTodo(input));
   };
 
   return (

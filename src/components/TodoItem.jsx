@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo, todoActions } from "../features/todoSlice";
 
-const TodoItem = ({ id, title, age }) => {
-  console.log(id, id);
+const TodoItem = ({ id, title }) => {
+  console.log("id", id);
   const dispatch = useDispatch();
 
   const handleDeleteClick = () => {
@@ -14,7 +14,7 @@ const TodoItem = ({ id, title, age }) => {
     <li className="list-group-item">
       <div className="d-flex justify-content-between">
         <span className="d-flex align-items-center">
-          {id}: {title} {age}
+          {id}: {title}
         </span>
         <button onClick={handleDeleteClick} className="btn btn-danger">
           Delete
