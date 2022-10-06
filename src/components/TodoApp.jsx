@@ -8,24 +8,40 @@ const TodoApp = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
-  const edit = useSelector((state) => state.todo.isEditing);
-  const editData = useSelector((state) => state.todo);
-  console.log("edittt", edit);
+  const editData = useSelector((state) => state.todo.editingData);
+  // const isEditing = useSelector((state) => state.todo.isEditing);
+  console.log("edirrr", editData);
 
   useEffect(() => {
-    if (edit) {
-      setInput(editData.todos[0]?.title);
-      console.log("useEffect input", input);
-    }
-  }, [edit]);
+    console.log("dfdff", editData.isEditing);
+    console.log(editData[0]?.title);
+    setInput(editData[0]?.title);
+  }, [editData]);
+
+  console.log("todoAPp editData", editData);
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (input === "") {
       return false;
     }
-    dispatch(todoActions.upsertTodo(input));
-    setInput("");
+
+    if (editData.length === 0) {
+      dispatch(
+        todoActions.upsertTodo({
+          type: "ADD",
+          data: input,
+        })
+      );
+      setInput("");
+    } else {
+      dispatch(
+        todoActions.upsertTodo({
+          type: "EDIT",
+          data: editData.id,
+        })
+      );
+    }
   };
 
   return (

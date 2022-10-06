@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { uuid } from "uuidv4";
-import { v4 as uuidv4 } from "uuid";
-console.log(uuidv4());
+import { log } from "util";
 const initialState = {
   isEditing: false,
   todos: [],
+  editingData: [],
 };
 
 const todoSlice = createSlice({
@@ -13,20 +12,41 @@ const todoSlice = createSlice({
 
   reducers: {
     upsertTodo(state, action) {
-      if (state.todos.id === undefined) {
-        console.log("state", state);
+      console.log("action payload data", action.payload.data);
+      if (action.payload.type === "ADD") {
+        state.isEditing = false;
+        console.log("ADDDD");
         const newTodo = {
-          id: uuidv4(),
-          title: action.payload,
+          id: Date.now(),
+          title: action.payload.data,
         };
         state.todos.push(newTodo);
-      } else if (state.todos.id > 0) {
-        console.log("action", action);
-        state.isEditing = true;
-        state.todos = state.todos.filter((item) =>
-          item.id === action.payload ? action.payload : item
-        );
       }
+      if (action.payload.type === "EDIT") {
+        console.log("EDITTT");
+        state.isEditing = true;
+
+        state.editingData = state.todos.filter(
+          (item) => item.id === action.payload.data
+        );
+
+        console.log("dataaa", state.todos);
+      }
+
+      // if (action.payload!==null) {
+      //   console.log("add");
+      //   const newTodo = {
+      //     id: Date.now(),
+      //     title: action.payload,
+      //   };
+      //   state.todos.push(newTodo);
+      // } if(action.payload>0) {
+      //   console.log("edit");
+      //   state.isEditing = true;
+      //   state.todos = state.todos.filter((item) =>
+      //     item.id === action.payload ? action.payload : item
+      //   );
+      // }
     },
     deleteTodo(state, action) {
       state.todos = state.todos.filter((item) => item.id !== action.payload);
