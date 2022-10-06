@@ -5,33 +5,26 @@ import { todoActions } from "../features/todoSlice";
 import { useSelector } from "react-redux";
 import "./TodoApp.css";
 const TodoApp = () => {
-  
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-  
+
   const edit = useSelector((state) => state.todo.isEditing);
   const editData = useSelector((state) => state.todo);
-  console.log("edittt",edit);
+  console.log("edittt", edit);
 
   useEffect(() => {
-    if(edit){
+    if (edit) {
       setInput(editData.todos[0]?.title);
-      console.log('useEffect input',input);
+      console.log("useEffect input", input);
     }
-  }, [edit])
-  
-  
-   
-  
- 
- 
+  }, [edit]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (input === "") {
       return false;
     }
-    dispatch(todoActions.addTodo(input));
+    dispatch(todoActions.upsertTodo(input));
     setInput("");
   };
 

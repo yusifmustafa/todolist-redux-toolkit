@@ -1,7 +1,7 @@
 import React from "react";
 import "./TodoItem.css";
 import { useDispatch } from "react-redux";
-import { deleteTodo, todoActions } from "../features/todoSlice";
+import { todoActions } from "../features/todoSlice";
 
 const TodoItem = ({ id, title,item }) => {
   console.log("id", id);
@@ -11,7 +11,7 @@ const TodoItem = ({ id, title,item }) => {
     dispatch(todoActions.deleteTodo(id));
   };
   const handleUptadeClick = () => {
-    dispatch(todoActions.editTodo(item));
+    dispatch(todoActions.upsertTodo(item));
   };
 
   return (

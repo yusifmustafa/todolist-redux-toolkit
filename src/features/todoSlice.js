@@ -12,28 +12,29 @@ const todoSlice = createSlice({
   initialState: initialState,
 
   reducers: {
-    addTodo(state, action) {
-      console.log("state", state);
-      const newTodo = {
-        id: uuidv4(),
-        title: action.payload,
-      };
-      state.todos.push(newTodo);
+    upsertTodo(state, action) {
+      if (state.todos.id === undefined) {
+        console.log("state", state);
+        const newTodo = {
+          id: uuidv4(),
+          title: action.payload,
+        };
+        state.todos.push(newTodo);
+      } else if (state.todos.id > 0) {
+        console.log("action", action);
+        state.isEditing = true;
+        state.todos = state.todos.filter((item) =>
+          item.id === action.payload ? action.payload : item
+        );
+      }
     },
     deleteTodo(state, action) {
       state.todos = state.todos.filter((item) => item.id !== action.payload);
     },
-    editTodo(state, action) {
-      console.log('action', action);
-      state.isEditing = true
-      state.todos = state.todos.filter(
-        (item) => item.id === action.payload ? action.payload : item
-      );
-      // state.type = action.payload.type;
-      // const edit = state.todos;
-      // console.log("hahahah",edit);
-      //edit[0].title = 
-    },
+    // state.type = action.payload.type;
+    // const edit = state.todos;
+    // console.log("hahahah",edit);
+    //edit[0].title =
   },
 });
 
