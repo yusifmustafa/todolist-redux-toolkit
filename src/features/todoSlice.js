@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 console.log(uuidv4());
 const initialState = {
-  type: "",
+  isEditing: false,
   todos: [],
 };
 
@@ -24,12 +24,14 @@ const todoSlice = createSlice({
       state.todos = state.todos.filter((item) => item.id !== action.payload);
     },
     editTodo(state, action) {
+      console.log('action', action);
+      state.isEditing = true
       state.todos = state.todos.filter(
-        (item) => item.id === action.payload.payload
+        (item) => item.id === action.payload ? action.payload : item
       );
-      state.type = action.payload.type;
-      const edit = state.todos;
-      console.log("hahahah",edit);
+      // state.type = action.payload.type;
+      // const edit = state.todos;
+      // console.log("hahahah",edit);
       //edit[0].title = 
     },
   },

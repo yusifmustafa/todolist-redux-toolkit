@@ -9,15 +9,16 @@ const TodoApp = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   
-  const edit = useSelector((state) => state.todo);
+  const edit = useSelector((state) => state.todo.isEditing);
+  const editData = useSelector((state) => state.todo);
   console.log("edittt",edit);
 
   useEffect(() => {
-    if(edit.type === 'EDIT'){
-      setInput(edit.todos[0]?.title);
+    if(edit){
+      setInput(editData.todos[0]?.title);
       console.log('useEffect input',input);
     }
-  }, [edit.type])
+  }, [edit])
   
   
    

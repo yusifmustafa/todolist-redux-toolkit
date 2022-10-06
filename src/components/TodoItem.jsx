@@ -3,7 +3,7 @@ import "./TodoItem.css";
 import { useDispatch } from "react-redux";
 import { deleteTodo, todoActions } from "../features/todoSlice";
 
-const TodoItem = ({ id, title }) => {
+const TodoItem = ({ id, title,item }) => {
   console.log("id", id);
   const dispatch = useDispatch();
 
@@ -11,7 +11,7 @@ const TodoItem = ({ id, title }) => {
     dispatch(todoActions.deleteTodo(id));
   };
   const handleUptadeClick = () => {
-    dispatch(todoActions.editTodo({}));
+    dispatch(todoActions.editTodo(item));
   };
 
   return (
