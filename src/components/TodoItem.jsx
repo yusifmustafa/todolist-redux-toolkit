@@ -11,7 +11,7 @@ const TodoItem = ({ id, title }) => {
     dispatch(todoActions.deleteTodo(id));
   };
   const handleUptadeClick = () => {
-    dispatch(todoActions.editTodo());
+    dispatch(todoActions.editTodo({}));
   };
 
   return (
