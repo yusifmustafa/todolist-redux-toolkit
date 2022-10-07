@@ -9,16 +9,10 @@ const TodoApp = () => {
   const [input, setInput] = useState("");
 
   const editData = useSelector((state) => state.todo.editingData);
-  // const isEditing = useSelector((state) => state.todo.isEditing);
-  console.log("edirrr", editData);
 
   useEffect(() => {
-    console.log("dfdff", editData.isEditing);
-    console.log(editData[0]?.title);
     setInput(editData[0]?.title);
   }, [editData]);
-
-  console.log("todoAPp editData", editData);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -30,15 +24,18 @@ const TodoApp = () => {
       dispatch(
         todoActions.upsertTodo({
           type: "ADD",
-          data: input,
+          input: input,
         })
       );
       setInput("");
-    } else {
+    }
+    if (editData.length > 0) {
       dispatch(
         todoActions.upsertTodo({
           type: "EDIT",
-          data: editData.id,
+          data: editData[0].id,
+          dataValue: input,
+          isEdit: true,
         })
       );
     }

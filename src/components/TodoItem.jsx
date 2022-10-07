@@ -3,14 +3,13 @@ import "./TodoItem.css";
 import { useDispatch } from "react-redux";
 import { todoActions } from "../features/todoSlice";
 
-const TodoItem = ({ id, title, item }) => {
+const TodoItem = ({ id, title }) => {
   const dispatch = useDispatch();
 
   const handleDeleteClick = () => {
     dispatch(todoActions.deleteTodo(id));
   };
-  const handleUptadeClick = () => {
-    console.log("edit button clicked",id);
+  const handleUptadeClick = () => { 
     dispatch(
       todoActions.upsertTodo({
         type: "EDIT",
